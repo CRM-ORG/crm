@@ -19,7 +19,8 @@
         <junit.version>4.10</junit.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <spring.security.version>4.2.3.RELEASE</spring.security.version>
-
+        <hibernate.version>5.2.10.Final</hibernate.version>
+        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <mysql.version>5.1.42</mysql.version>
         <!--日志管理-->
         <slf4j.version>1.7.25</slf4j.version>
@@ -82,11 +83,37 @@
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- hibernate4 -->
+        <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.2.16.Final</version>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <!--java persistence API 2.1 -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.1-api</artifactId>
+            <version>1.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>cglib</groupId>
+                    <artifactId>cglib</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>dom4j</groupId>
+                    <artifactId>dom4j</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>${hibernate.version}</version>
         </dependency>
         <!-- MySql -->
         <dependency>

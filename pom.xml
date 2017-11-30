@@ -40,6 +40,8 @@
 
         <!--env-->
         <jdk.version>1.8</jdk.version>
+        <!--shiro-->
+        <shiro.version>1.2.3</shiro.version>
     </properties>
 
     <dependencies>
@@ -147,7 +149,23 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-
+        <!--shiro包-->
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-all -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>crm</finalName>

@@ -195,6 +195,30 @@
         </dependency>
     </dependencies>
     <build>
+        <plugins>
+            <!-- Compiler 插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>utf-8</encoding>
+                    <showWarnings>true</showWarnings>
+                    <compilerArguments>
+                        <verbose/>
+                        <bootclasspath>
+                            ${java.home}\lib\rt.jar;${java.home}\lib\jce.jar
+                        </bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
         <finalName>crm</finalName>
     </build>
 </project>

@@ -1,13 +1,14 @@
 package com.partum.service.serviceImpl;
 
 
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.partum.dao.EmployeeDao;
 import com.partum.pojo.Employee;
 import com.partum.service.EmployeeService;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl extends ServiceImpl<EmployeeDao, Employee> implements EmployeeService{
 
     @Autowired
     private EmployeeDao employeeDao;

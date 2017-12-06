@@ -17,11 +17,12 @@ public class ShiroTestController {
         Subject currentUser = SecurityUtils.getSubject();
         if (!currentUser.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(username,password);
-            token.setRememberMe(true);
+//            token.setRememberMe(true);
             try {
+                System.out.println("1. "+token.hashCode());
                 currentUser.login(token);
             }catch (AuthenticationException ae) {
-                ae.printStackTrace();
+//                ae.printStackTrace();
                 System.out.println("登录失败  "+ae.getMessage());
             }
 

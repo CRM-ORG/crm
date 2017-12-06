@@ -5,73 +5,6 @@
     <!-- =========================================================
          Shiro核心组件——不是特定于Spring的
          ========================================================= -->
-    <!-- Shiro的主要业务层对象是支持网络的应用程序
-        (当没有web环境时，使用DefaultSecurityManager)-->
-    <!--配置securityManager-->
-    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-        <!--为securityManager配置属性-->
-        <!--缓存配置-->
-        <!--<property name="cacheManager" ref="cacheManager"/>-->
-        <!--单个Realm配置-->
-        <property name="realm" ref="jdbcRealm"/>
-       <!--为shiro配置缓存策略，-->
-        <property name="authenticator" ref="authenticator"></property>
-        <!--为shiro配置会话管理-->
-        <property name="sessionManager" ref="sessionManager"></property>
-        <!--多个Realm配置-->
-        <!--<property name="realms">-->
-            <!--<list>-->
-                <!--<ref bean="jdbcRealm"></ref>-->
-                <!--<ref bean="SecondRealm"></ref>-->
-            <!--</list>-->
-        <!--</property>-->
-    </bean>
-    <!--会话管理配置-->
-    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager" />
-    <!--认证策略-->
-    <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
-        <!--三种认证策略
-         默认为一个成功即可
-             * @see AllSuccessfulStrategy
-             * @see AtLeastOneSuccessfulStrategy
-             * @see FirstSuccessfulStrategy
-        -->
-        <property name="authenticationStrategy">
-            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
-        </property>
-    </bean>
-    <!-- 多个Realm配置.并为其配置加密方式 -->
-    <bean id="jdbcRealm" class="com.partum.shiro.ShiroRealm">
-        <property name="credentialsMatcher">
-            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-                <property name="hashAlgorithmName" value="MD5"></property>
-                <property name="hashIterations" value="1024"></property>
-            </bean>
-        </property>
-    </bean>
-    <!--<bean id="SecondRealm" class="com.atguigu.shiro.realm.SecondRealm">-->
-        <!--<property name="credentialsMatcher">-->
-            <!--<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
-                <!--<property name="hashAlgorithmName" value="SHA1"></property>-->
-                <!--<property name="hashIterations" value="1024"></property>-->
-            <!--</bean>-->
-        <!--</property>-->
-    <!--</bean>-->
-    <!-- 自动调用init()和销毁()方法的Post处理器
-        对于spring配置的Shiro对象，所以你不需要
-        1)为每个bean指定一个单元方法和方法属性
-        定义
-        2)甚至知道Shiro的对象需要这些方法
-        叫 -->
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
-    <!-- 让Shiro Annotations为spring配置的bean提供支持。只运行后
-            生命周期处理器运行: -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
-          depends-on="lifecycleBeanPostProcessor"/>
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
-        <property name="securityManager" ref="securityManager"/>
-    </bean>
-
     <!--在web容器中的过滤去会自动来这里寻找配置，并按照该要求过滤-->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -94,6 +27,53 @@
             </value>
         </property>
     </bean>
+    <!-- Shiro的主要业务层对象是支持网络的应用程序
+        (当没有web环境时，使用DefaultSecurityManager)-->
+    <!--配置securityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--为securityManager配置属性-->
+        <!--缓存配置-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+        <!--单个Realm配置-->
+        <property name="realm" ref="shiroRealm"/>
+       <!--为shiro配置缓存策略，-->
+        <!--<property name="authenticator" ref="authenticator"></property>-->
+        <!--为shiro配置会话管理-->
+        <property name="sessionManager" ref="sessionManager"></property>
+    </bean>
+    <!--会话管理配置-->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager" />
+    <!--认证策略-->
+    <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <!--三种认证策略
+         默认为一个成功即可
+             * @see AllSuccessfulStrategy
+             * @see AtLeastOneSuccessfulStrategy
+             * @see FirstSuccessfulStrategy
+        -->
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
+        </property>
+    </bean>
+    <!-- 多个Realm配置.并为其配置加密方式 -->
+    <bean id="shiroRealm" class="com.partum.shiro.ShiroTextRealm">
+    </bean>
+    <!-- 自动调用init()和销毁()方法的Post处理器
+        对于spring配置的Shiro对象，所以你不需要
+        1)为每个bean指定一个单元方法和方法属性
+        定义
+        2)甚至知道Shiro的对象需要这些方法
+        叫 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <!-- 让Shiro Annotations为spring配置的bean提供支持。只运行后
+            生命周期处理器运行: -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+
+
 
 
 </beans>

@@ -1,4 +1,4 @@
-package com.partum.entity;
+package com.partum.pojo;
 public class Employee {
     private Long empId;//员工id
     private java.util.Date gmtCreate;//员工创建时间

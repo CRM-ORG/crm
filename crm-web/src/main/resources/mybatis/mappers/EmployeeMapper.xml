@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.partum.dao">
+<mapper namespace="com.partum.dao.EmployeeDao">
 
 
     <!-- 通用查询映射结果 -->
@@ -19,5 +19,10 @@
     <sql id="Employee_Base_Column_List">
         emp_id AS empId, emp_name AS empName, emp_password AS empPassword, emp_email AS empEmail, emp_moblie AS empMoblie, last_login AS lastLogin, gmt_create AS gmtCreate, gmt_modified AS gmtModified
     </sql>
+
+    <insert id="insertEmployee" parameterType="Employee">
+        insert into employee(emp_id,gmt_create,emp_moblie,gender,last_login,emp_name,real_name,adress,is_delete,native_place,gmt_update,emp_password,emp_email)
+        values(#{empId},#{gmtCreate},#{empMoblie},#{gender},#{lastLogin},#{empName},#{realName},#{adress},#{isDelete},#{nativePlace},#{gmtUpdate},#{empPassword},#{empEmail})
+    </insert>
 
 </mapper>

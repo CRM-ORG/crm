@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface EmployeeService extends IService<Employee> {
-    int insertEmployee(Employee employee);
+    Integer insertEmployee(Employee employee);
 }

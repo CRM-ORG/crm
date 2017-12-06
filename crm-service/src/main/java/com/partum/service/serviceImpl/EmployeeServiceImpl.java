@@ -14,7 +14,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeDao, Employee> impl
     private EmployeeDao employeeDao;
 
     @Override
-    public int insertEmployee(Employee employee) {
+    public Integer insertEmployee(Employee employee) {
         /**
          * 选择加密方式为新增的员工密码进行加密
          * 使用MD5方式并且迭代1024次进行加密

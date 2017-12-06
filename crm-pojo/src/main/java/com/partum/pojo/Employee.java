@@ -7,7 +7,6 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
-import java.io.Serializable;
 
 /**
  * 员工实体类

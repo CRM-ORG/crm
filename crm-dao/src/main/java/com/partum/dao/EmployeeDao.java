@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EmployeeDao extends BaseMapper<Employee> {
-    int insertEmployee(Employee employee);
+    Integer insertEmployee(Employee employee);
 
 }

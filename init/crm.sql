@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : ss
-Source Server Version : 50719
+Source Server         : localhost
+Source Server Version : 50632
 Source Host           : localhost:3306
 Source Database       : crm
 
 Target Server Type    : MYSQL
-Target Server Version : 50719
+Target Server Version : 50632
 File Encoding         : 65001
 
-Date: 2017-12-06 13:48:31
+Date: 2017-12-06 13:56:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,11 +23,7 @@ CREATE TABLE `building_ring` (
   `ring_id` bigint(10) NOT NULL AUTO_INCREMENT COMMENT '工作圈表',
   `content` text,
   PRIMARY KEY (`ring_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of building_ring
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for chance
@@ -44,11 +40,7 @@ CREATE TABLE `chance` (
   `gmt_modified` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '销售机会修改时间',
   PRIMARY KEY (`chance_id`),
   UNIQUE KEY `uk_emp` (`emp_id`) USING HASH
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of chance
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for cont
@@ -68,10 +60,6 @@ CREATE TABLE `cont` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of cont
--- ----------------------------
-
--- ----------------------------
 -- Table structure for customer
 -- ----------------------------
 DROP TABLE IF EXISTS `customer`;
@@ -82,11 +70,7 @@ CREATE TABLE `customer` (
   `gmt_create` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '客户创建时间',
   `gmt_modified` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '客户修改时间',
   PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of customer
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for employee
@@ -100,13 +84,14 @@ CREATE TABLE `employee` (
   `emp_moblie` varchar(13) DEFAULT NULL COMMENT '员工手机号码',
   `last_login` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '员工最后一次登录时间',
   `gmt_create` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '员工创建时间',
-  `gmt_modified` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '员工修改时间',
+  `gmt_update` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '员工修改时间',
+  `is_delete` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否删除',
+  `real_name` varchar(15) DEFAULT NULL COMMENT '登录名称',
+  `gender` tinyint(1) DEFAULT NULL COMMENT '性别',
+  `adress` varchar(255) DEFAULT NULL COMMENT '地址',
+  `native_place` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of employee
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for product
@@ -120,11 +105,7 @@ CREATE TABLE `product` (
   `gmt_create` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `gmt_modified` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of product
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for role
@@ -134,11 +115,7 @@ CREATE TABLE `role` (
   `role_id` bigint(10) NOT NULL AUTO_INCREMENT,
   `role_name` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for role_employee
@@ -148,8 +125,3 @@ CREATE TABLE `role_employee` (
   `emp_id` bigint(10) DEFAULT NULL,
   `role_id` bigint(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of role_employee
--- ----------------------------
-SET FOREIGN_KEY_CHECKS=1;

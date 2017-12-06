@@ -3,5 +3,21 @@
 <mapper namespace="com.partum.dao.PsCommentDao">
 
 
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.yys.test.entity.Employee">
+        <id column="emp_id" property="empId" />
+        <result column="emp_name" property="empName" />
+        <result column="emp_password" property="empPassword" />
+        <result column="emp_email" property="empEmail" />
+        <result column="emp_moblie" property="empMoblie" />
+        <result column="last_login" property="lastLogin" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        emp_id AS empId, emp_name AS empName, emp_password AS empPassword, emp_email AS empEmail, emp_moblie AS empMoblie, last_login AS lastLogin, gmt_create AS gmtCreate, gmt_modified AS gmtModified
+    </sql>
 
 </mapper>

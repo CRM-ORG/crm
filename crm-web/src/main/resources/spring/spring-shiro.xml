@@ -55,8 +55,14 @@
             <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
         </property>
     </bean>
-    <!-- 多个Realm配置.并为其配置加密方式 -->
+    <!-- 多个Realm配置.并为其配置加密方式 MD5加密次数1024-->
     <bean id="shiroRealm" class="com.partum.shiro.ShiroTextRealm">
+    <property name="credentialsMatcher">
+    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    <property name="hashAlgorithmName" value="MD5"></property>
+    <property name="hashIterations" value="1024"></property>
+    </bean>
+    </property>
     </bean>
     <!-- 自动调用init()和销毁()方法的Post处理器
         对于spring配置的Shiro对象，所以你不需要

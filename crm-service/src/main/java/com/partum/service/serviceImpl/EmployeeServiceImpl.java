@@ -1,17 +1,25 @@
 package com.partum.service.serviceImpl;
 
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.partum.dao.EmployeeDao;
 import com.partum.pojo.Employee;
 import com.partum.service.EmployeeService;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class EmployeeServiceImpl extends ServiceImpl<EmployeeDao, Employee> implements EmployeeService{
+import javax.annotation.Resource;
 
-    @Autowired
+@Service("employeeService")
+public class EmployeeServiceImpl implements EmployeeService{
     private EmployeeDao employeeDao;
+@Autowired
+    public EmployeeServiceImpl(EmployeeDao employeeDao) {
+        this.employeeDao=employeeDao;
+    }
+
+
+
 
     @Override
     public Integer insertEmployee(Employee employee) {
@@ -28,7 +36,7 @@ public class EmployeeServiceImpl extends ServiceImpl<EmployeeDao, Employee> impl
          */
         Object result =  new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
         System.out.println(result);
-        employee.setEmpPassword((String) result);
+        employee.setEmpPassword(result.toString());
         return employeeDao.insertEmployee(employee);
     }
 }

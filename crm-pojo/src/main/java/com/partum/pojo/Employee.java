@@ -2,6 +2,7 @@ package com.partum.pojo;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -12,6 +13,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
  * 员工实体类
  * @since 2017-12-06
  */
+@TableName("employee")
 public class Employee extends Model<Employee> {
 
     private static final long serialVersionUID = 1L;

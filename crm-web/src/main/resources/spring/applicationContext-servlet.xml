@@ -15,11 +15,10 @@
     <mvc:default-servlet-handler/>
     <!--此处修改2017年11月2日-->
     <!--scan the package-->
-    <!--<context:component-scan base-package="com.instrantes.*"/>-->
     <!--扫描web相关的controller,security，service，Exception-->
-    <context:component-scan base-package="com.partum.*"/>
-    <!--<context:component-scan base-package="com.partum.service"/>-->
-    <!--<context:component-scan base-package="com.partum.dao"/>-->
+    <context:component-scan base-package="com.partum.controller"/>
+    <context:component-scan base-package="com.partum.service"/>
+    <context:component-scan base-package="com.partum.dao"/>
 
     <!-- 激活组件扫描功能,扫描aop的相关组件组件 -->
     <!--<context:component-scan base-package="com.instrantes.aop"/>-->

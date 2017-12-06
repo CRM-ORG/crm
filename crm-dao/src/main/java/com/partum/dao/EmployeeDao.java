@@ -5,7 +5,8 @@ import com.partum.pojo.Employee;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeDao extends BaseMapper<Employee> {
+public interface EmployeeDao  {
+
     Integer insertEmployee(Employee employee);
 
 }

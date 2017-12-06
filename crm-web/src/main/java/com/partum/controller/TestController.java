@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-    @Autowired
-    private EmployeeService employeeService;
-
-    @RequestMapping("/shiro/Employee/add")
-    public int addEmployee(Employee employee){
-        employee.setEmpName("peter");
-        employee.setEmpPassword("123456");
-        return employeeService.insertEmployee(employee);
-    }
+//    @Autowired
+//    private EmployeeService employeeService;
+//
+//    @RequestMapping("/shiro/Employee/add")
+//    public int addEmployee(Employee employee){
+//        employee.setEmpName("peter");
+//        employee.setEmpPassword("123456");
+//        return employeeService.insertEmployee(employee);
+//    }
 }

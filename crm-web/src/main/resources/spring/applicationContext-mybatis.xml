@@ -3,24 +3,37 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <!-- 自动扫描Mapping.xml文件 -->
-        <property name="mapperLocations" value="classpath:mybatis/mappers/**/*.xml"/>
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
-        <!--<property name="typeAliasesPackage" value="com.baomidou.springmvc.model.*"/>-->
-        <property name="plugins">
-            <array>
-                <!-- 分页插件配置 -->
-                <bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
-                    <property name="dialectType" value="mysql"/>
-                </bean>
-            </array>
-        </property>
-        <!-- 全局配置注入 -->
-        <!--<property name="globalConfig" ref="globalConfig"/>-->
+    <!--<bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--&lt;!&ndash; 自动扫描Mapping.xml文件 &ndash;&gt;-->
+        <!--<property name="mapperLocations" value="classpath:mybatis/mappers/**/*.xml"/>-->
+        <!--<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
+        <!--&lt;!&ndash; 配置包别名，支持通配符 * 或者 ; 分割 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="typeAliasesPackage" value="com.partum.pojo" />&ndash;&gt;-->
+        <!--&lt;!&ndash; 枚举属性配置扫描，支持通配符 * 或者 ; 分割 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="typeEnumsPackage" value="com.partum.pojo"/>&ndash;&gt;-->
+        <!--<property name="plugins">-->
+            <!--<array>-->
+                <!--&lt;!&ndash; 分页插件配置 &ndash;&gt;-->
+                <!--<bean id="paginationInterceptor" class="com.baomidou.mybatisplus.plugins.PaginationInterceptor">-->
+                    <!--<property name="dialectType" value="mysql"/>-->
+                <!--</bean>-->
+            <!--</array>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 全局配置注入 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="globalConfig" ref="globalConfig"/>&ndash;&gt;-->
+    <!--</bean>-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="classpath:mybatis/mappers/**/*.xml" />
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
     </bean>
-
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 会话工厂 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
+        <!-- 扫描包的路径 -->
+        <property name="basePackage" value="com.partum.dao" />
+    </bean>
     <!--<bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">-->
         <!--&lt;!&ndash;-->
             <!--AUTO->`0`("数据库ID自增")-->

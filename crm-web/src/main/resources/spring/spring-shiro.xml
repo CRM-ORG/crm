@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- =========================================================
          Shiro核心组件——不是特定于Spring的
          ========================================================= -->
@@ -28,7 +27,7 @@
         <!--</property>-->
     </bean>
     <!--会话管理配置-->
-    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager"></bean>
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager" />
     <!--认证策略-->
     <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
         <!--三种认证策略

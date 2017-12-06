@@ -2,36 +2,46 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>
-        classpath:spring/applicationContext*.xml,
-        classpath:spring/spring-shiro.xml
-    </param-value>
-  </context-param>
+    <!--<context-param>-->
+    <!--<param-name>shiroFilter</param-name>-->
+    <!--<param-value>classpath:spring/spring-shiro.xml</param-value>-->
+    <!--</context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/applicationContext*.xml,
+            classpath:spring/spring-shiro.xml
+        </param-value>
+    </context-param>
+
     <context-param>
         <param-name>log4jConfiguration</param-name>
         <param-value>classpath:log/log4j2.xml</param-value>
     </context-param>
-  <!--
-    配置shiroFlter
-    DelegatingFilterProxy其实是shiroFileter的一个代理，默认情况下spring会到ioc容器中查找和filter-name对应的bean
-    也可以通过targetBeanName的初始化参数来配置filter bean的id
-  -->
-  <filter>
-    <filter-name>shiroFilter</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-    <init-param>
-      <param-name>targetFilterLifecycle</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
+    <!--
+      配置shiroFlter
+      DelegatingFilterProxy其实是shiroFileter的一个代理，默认情况下spring会到ioc容器中查找和filter-name对应的bean
+      也可以通过targetBeanName的初始化参数来配置filter bean的id
+    -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
 
-  <filter-mapping>
-    <filter-name>shiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
 
     <!--enconding filter-->
     <filter>
@@ -65,7 +75,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/crm-servlet.xml</param-value>
+            <param-value>classpath:spring/applicationContext-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

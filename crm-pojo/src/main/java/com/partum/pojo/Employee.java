@@ -1,145 +1,123 @@
 package com.partum.pojo;
 
-import java.io.Serializable;
-
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.activerecord.Model;
 
-/**
- * 员工实体类
- * @since 2017-12-06
- */
-@TableName("employee")
-public class Employee extends Model<Employee> {
+public class Employee {
+    private Long empId;//员工id
+    private java.util.Date gmtCreate;//员工创建时间
+    private String empMoblie;//员工手机号码
+    private Integer gender;//性别
+    private java.util.Date lastLogin;//员工最后一次登录时间
+    private String empName;//员工姓名
+    private String realName;//登录名称
+    private String adress;//地址
+    private Integer isDelete;//是否删除
+    private String nativePlace;
+    private java.util.Date gmtUpdate;//员工修改时间
+    private String empPassword;//员工密码
+    private String empEmail;//员工邮箱
 
-    private static final long serialVersionUID = 1L;
+    public Long getEmpId() {
+        return empId;
+    }
 
-    /**
-     * 员工id
-     */
-	@TableId(value="emp_id", type= IdType.AUTO)
-	private Long empId;
-    /**
-     * 员工姓名
-     */
-	@TableField("emp_name")
-	private String empName;
-    /**
-     * 员工密码
-     */
-	@TableField("emp_password")
-	private String empPassword;
-    /**
-     * 员工邮箱
-     */
-	@TableField("emp_email")
-	private String empEmail;
-    /**
-     * 员工手机号码
-     */
-	@TableField("emp_moblie")
-	private String empMoblie;
-    /**
-     * 员工最后一次登录时间
-     */
-	@TableField("last_login")
-	private Date lastLogin;
-    /**
-     * 员工创建时间
-     */
-	@TableField("gmt_create")
-	private Date gmtCreate;
-    /**
-     * 员工修改时间
-     */
-	@TableField("gmt_modified")
-	private Date gmtModified;
+    public void setEmpId(Long empId) {
+        this.empId = empId;
+    }
 
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
 
-	public Long getEmpId() {
-		return empId;
-	}
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
 
-	public void setEmpId(Long empId) {
-		this.empId = empId;
-	}
+    public String getEmpMoblie() {
+        return empMoblie;
+    }
 
-	public String getEmpName() {
-		return empName;
-	}
+    public void setEmpMoblie(String empMoblie) {
+        this.empMoblie = empMoblie;
+    }
 
-	public void setEmpName(String empName) {
-		this.empName = empName;
-	}
+    public Integer getGender() {
+        return gender;
+    }
 
-	public String getEmpPassword() {
-		return empPassword;
-	}
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	public void setEmpPassword(String empPassword) {
-		this.empPassword = empPassword;
-	}
+    public Date getLastLogin() {
+        return lastLogin;
+    }
 
-	public String getEmpEmail() {
-		return empEmail;
-	}
+    public void setLastLogin(Date lastLogin) {
+        this.lastLogin = lastLogin;
+    }
 
-	public void setEmpEmail(String empEmail) {
-		this.empEmail = empEmail;
-	}
+    public String getEmpName() {
+        return empName;
+    }
 
-	public String getEmpMoblie() {
-		return empMoblie;
-	}
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
 
-	public void setEmpMoblie(String empMoblie) {
-		this.empMoblie = empMoblie;
-	}
+    public String getRealName() {
+        return realName;
+    }
 
-	public Date getLastLogin() {
-		return lastLogin;
-	}
+    public void setRealName(String realName) {
+        this.realName = realName;
+    }
 
-	public void setLastLogin(Date lastLogin) {
-		this.lastLogin = lastLogin;
-	}
+    public String getAdress() {
+        return adress;
+    }
 
-	public Date getGmtCreate() {
-		return gmtCreate;
-	}
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
 
-	public void setGmtCreate(Date gmtCreate) {
-		this.gmtCreate = gmtCreate;
-	}
+    public Integer getIsDelete() {
+        return isDelete;
+    }
 
-	public Date getGmtModified() {
-		return gmtModified;
-	}
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
 
-	public void setGmtModified(Date gmtModified) {
-		this.gmtModified = gmtModified;
-	}
+    public String getNativePlace() {
+        return nativePlace;
+    }
 
-	@Override
-	protected Serializable pkVal() {
-		return this.empId;
-	}
+    public void setNativePlace(String nativePlace) {
+        this.nativePlace = nativePlace;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee{" +
-			"empId=" + empId +
-			", empName=" + empName +
-			", empPassword=" + empPassword +
-			", empEmail=" + empEmail +
-			", empMoblie=" + empMoblie +
-			", lastLogin=" + lastLogin +
-			", gmtCreate=" + gmtCreate +
-			", gmtModified=" + gmtModified +
-			"}";
-	}
+    public Date getGmtUpdate() {
+        return gmtUpdate;
+    }
+
+    public void setGmtUpdate(Date gmtUpdate) {
+        this.gmtUpdate = gmtUpdate;
+    }
+
+    public String getEmpPassword() {
+        return empPassword;
+    }
+
+    public void setEmpPassword(String empPassword) {
+        this.empPassword = empPassword;
+    }
+
+    public String getEmpEmail() {
+        return empEmail;
+    }
+
+    public void setEmpEmail(String empEmail) {
+        this.empEmail = empEmail;
+    }
 }
